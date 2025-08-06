@@ -50,6 +50,9 @@ class NavigationManager {
     this.hamburger = document.getElementById("hamburger");
     this.navLinks = document.querySelectorAll(".nav-link");
     this.sections = document.querySelectorAll("section[id]");
+    this.scrollDots = document.querySelectorAll(".scroll-dot");
+    this.isScrolling = false;
+    this.scrollTimeout = null;
 
     this.init();
   }
@@ -66,11 +69,19 @@ class NavigationManager {
       link.addEventListener("click", (e) => this.handleNavClick(e));
     });
 
+    // Handle scroll dot clicks
+    this.scrollDots.forEach((dot) => {
+      dot.addEventListener("click", (e) => this.handleDotClick(e));
+    });
+
     // Close mobile menu when clicking outside
     document.addEventListener("click", (e) => this.handleOutsideClick(e));
 
     // Handle resize
     window.addEventListener("resize", () => this.handleResize());
+
+    // Add enhanced scroll snapping
+    this.setupScrollSnapping();
 
     // Initial scroll position check
     this.handleScroll();
@@ -99,11 +110,21 @@ class NavigationManager {
       const sectionBottom = sectionTop + section.offsetHeight;
       const sectionId = section.getAttribute("id");
       const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+      const scrollDot = document.querySelector(
+        `.scroll-dot[data-section="${sectionId}"]`
+      );
 
       if (scrollTop >= sectionTop && scrollTop < sectionBottom) {
+        // Update nav links
         this.navLinks.forEach((link) => link.classList.remove("active"));
         if (navLink) {
           navLink.classList.add("active");
+        }
+
+        // Update scroll dots
+        this.scrollDots.forEach((dot) => dot.classList.remove("active"));
+        if (scrollDot) {
+          scrollDot.classList.add("active");
         }
       }
     });
@@ -150,11 +171,157 @@ class NavigationManager {
     }
   }
 
+  handleDotClick(e) {
+    const sectionId = e.target.getAttribute("data-section");
+    const targetSection = document.getElementById(sectionId);
+
+    if (targetSection) {
+      const offsetTop = targetSection.offsetTop;
+
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
+      });
+    }
+  }
+
   handleResize() {
     // Close mobile menu on desktop resize
     if (window.innerWidth > 768 && this.navMenu.classList.contains("active")) {
       this.toggleMobileMenu();
     }
+  }
+
+  setupScrollSnapping() {
+    let isScrolling = false;
+    let scrollTimer = null;
+
+    // Enhanced scroll snapping for better UX
+    window.addEventListener(
+      "wheel",
+      (e) => {
+        // Only apply enhanced snapping on desktop
+        if (window.innerWidth <= 768) return;
+
+        if (!isScrolling) {
+          isScrolling = true;
+
+          // Clear any existing timer
+          if (scrollTimer) {
+            clearTimeout(scrollTimer);
+          }
+
+          // Determine scroll direction
+          const delta = e.deltaY;
+          const currentScrollTop = window.pageYOffset;
+
+          // Find current section
+          let currentSectionIndex = 0;
+          this.sections.forEach((section, index) => {
+            const sectionTop = section.offsetTop;
+            const sectionBottom = sectionTop + section.offsetHeight;
+
+            if (
+              currentScrollTop >= sectionTop - 100 &&
+              currentScrollTop < sectionBottom - 100
+            ) {
+              currentSectionIndex = index;
+            }
+          });
+
+          // Determine target section based on scroll direction
+          let targetSection;
+          if (delta > 0 && currentSectionIndex < this.sections.length - 1) {
+            // Scrolling down
+            targetSection = this.sections[currentSectionIndex + 1];
+          } else if (delta < 0 && currentSectionIndex > 0) {
+            // Scrolling up
+            targetSection = this.sections[currentSectionIndex - 1];
+          }
+
+          // Smooth scroll to target section
+          if (targetSection) {
+            e.preventDefault();
+            const targetTop = targetSection.offsetTop;
+
+            window.scrollTo({
+              top: targetTop,
+              behavior: "smooth",
+            });
+          }
+
+          // Reset scrolling flag after animation completes
+          scrollTimer = setTimeout(() => {
+            isScrolling = false;
+          }, 1000);
+        } else {
+          e.preventDefault();
+        }
+      },
+      { passive: false }
+    );
+
+    // Handle touch scrolling for mobile
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    window.addEventListener(
+      "touchstart",
+      (e) => {
+        touchStartY = e.changedTouches[0].screenY;
+      },
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "touchend",
+      (e) => {
+        touchEndY = e.changedTouches[0].screenY;
+        const touchDelta = touchStartY - touchEndY;
+
+        // Only trigger on significant swipes
+        if (Math.abs(touchDelta) > 50) {
+          const currentScrollTop = window.pageYOffset;
+
+          // Find current section
+          let currentSectionIndex = 0;
+          this.sections.forEach((section, index) => {
+            const sectionTop = section.offsetTop;
+            const sectionBottom = sectionTop + section.offsetHeight;
+
+            if (
+              currentScrollTop >= sectionTop - 100 &&
+              currentScrollTop < sectionBottom - 100
+            ) {
+              currentSectionIndex = index;
+            }
+          });
+
+          // Determine target section
+          let targetSection;
+          if (
+            touchDelta > 0 &&
+            currentSectionIndex < this.sections.length - 1
+          ) {
+            // Swiping up (scrolling down)
+            targetSection = this.sections[currentSectionIndex + 1];
+          } else if (touchDelta < 0 && currentSectionIndex > 0) {
+            // Swiping down (scrolling up)
+            targetSection = this.sections[currentSectionIndex - 1];
+          }
+
+          if (targetSection) {
+            const targetTop = targetSection.offsetTop;
+
+            window.scrollTo({
+              top: targetTop,
+              behavior: "smooth",
+            });
+          }
+        }
+      },
+      { passive: true }
+    );
   }
 }
 
