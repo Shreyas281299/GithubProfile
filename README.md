@@ -24,6 +24,12 @@ Currently at **Cisco**, building core components and SDKs for Webex Contact Cent
 - **Contact Center Widgets**: Embeddable widgets for Webex platform
 - **UI Metrics Logger**: NPM package for prop-level analytics tracking
 
+## 🎙️ Webinars & Talks
+
+- **[Webex Meetings SDK V3](https://app.vidcast.io/share/bcd28aa8-ab52-46bc-8ca8-3c2aa41f8f83)**: SDK integration, Background Noise Reduction, Virtual Backgrounds
+- **[Webex Web Calling SDK](https://app.vidcast.io/share/73d00cff-83a7-458e-9857-9c6e29b11943)**: Audio calling, supplementary services, advanced features
+- **[Multistream Optimization](https://app.vidcast.io/share/e3cae6cb-6417-4f07-bb48-fce4ae12ab93)**: Expert techniques for Webex Meetings SDK multistream
+
 ## 📬 Let's Connect
 
 - **Portfolio**: [shreyas281299.github.io](https://shreyas281299.github.io)

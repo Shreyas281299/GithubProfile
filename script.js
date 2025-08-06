@@ -196,66 +196,107 @@ class NavigationManager {
     let isScrolling = false;
     let scrollTimer = null;
 
-    // Enhanced scroll snapping for better UX
+    // Enhanced scroll snapping with content-aware logic
     window.addEventListener(
       "wheel",
       (e) => {
         // Only apply enhanced snapping on desktop
         if (window.innerWidth <= 768) return;
 
-        if (!isScrolling) {
+        const currentScrollTop = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        const delta = e.deltaY;
+        const scrollDirection = delta > 0 ? "down" : "up";
+
+        // Find current section and its boundaries
+        let currentSection = null;
+        let currentSectionIndex = 0;
+
+        this.sections.forEach((section, index) => {
+          const sectionTop = section.offsetTop;
+          const sectionBottom = sectionTop + section.offsetHeight;
+
+          if (
+            currentScrollTop >= sectionTop - 100 &&
+            currentScrollTop < sectionBottom - 100
+          ) {
+            currentSection = section;
+            currentSectionIndex = index;
+          }
+        });
+
+        if (!currentSection) return;
+
+        const sectionTop = currentSection.offsetTop;
+        const sectionHeight = currentSection.offsetHeight;
+        const viewportHeight = window.innerHeight;
+
+        // Calculate how much of the section is visible and scrollable
+        const scrollableHeight = Math.max(0, sectionHeight - viewportHeight);
+        const sectionScrollProgress = Math.max(
+          0,
+          currentScrollTop - sectionTop
+        );
+        const isAtSectionTop = sectionScrollProgress <= 50; // 50px threshold
+        const isAtSectionBottom =
+          sectionScrollProgress >= scrollableHeight - 50; // 50px threshold
+
+        // Only snap if we're at the boundaries of the section
+        let shouldSnap = false;
+        let targetSection = null;
+
+        if (scrollDirection === "down") {
+          // Scrolling down: only snap if we're at the bottom of current section
+          if (
+            isAtSectionBottom &&
+            currentSectionIndex < this.sections.length - 1
+          ) {
+            shouldSnap = true;
+            targetSection = this.sections[currentSectionIndex + 1];
+          }
+        } else if (scrollDirection === "up") {
+          // Scrolling up: only snap if we're at the top of current section
+          if (isAtSectionTop && currentSectionIndex > 0) {
+            shouldSnap = true;
+            targetSection = this.sections[currentSectionIndex - 1];
+
+            // For upward scroll, go to the bottom of the previous section if it's tall
+            const prevSectionHeight = targetSection.offsetHeight;
+            if (prevSectionHeight > viewportHeight) {
+              const targetScrollTop =
+                targetSection.offsetTop + prevSectionHeight - viewportHeight;
+              e.preventDefault();
+              isScrolling = true;
+
+              window.scrollTo({
+                top: targetScrollTop,
+                behavior: "smooth",
+              });
+
+              scrollTimer = setTimeout(() => {
+                isScrolling = false;
+              }, 1000);
+              return;
+            }
+          }
+        }
+
+        // Apply snapping if conditions are met
+        if (shouldSnap && targetSection && !isScrolling) {
+          e.preventDefault();
           isScrolling = true;
 
-          // Clear any existing timer
-          if (scrollTimer) {
-            clearTimeout(scrollTimer);
-          }
+          const targetTop = targetSection.offsetTop;
 
-          // Determine scroll direction
-          const delta = e.deltaY;
-          const currentScrollTop = window.pageYOffset;
-
-          // Find current section
-          let currentSectionIndex = 0;
-          this.sections.forEach((section, index) => {
-            const sectionTop = section.offsetTop;
-            const sectionBottom = sectionTop + section.offsetHeight;
-
-            if (
-              currentScrollTop >= sectionTop - 100 &&
-              currentScrollTop < sectionBottom - 100
-            ) {
-              currentSectionIndex = index;
-            }
+          window.scrollTo({
+            top: targetTop,
+            behavior: "smooth",
           });
-
-          // Determine target section based on scroll direction
-          let targetSection;
-          if (delta > 0 && currentSectionIndex < this.sections.length - 1) {
-            // Scrolling down
-            targetSection = this.sections[currentSectionIndex + 1];
-          } else if (delta < 0 && currentSectionIndex > 0) {
-            // Scrolling up
-            targetSection = this.sections[currentSectionIndex - 1];
-          }
-
-          // Smooth scroll to target section
-          if (targetSection) {
-            e.preventDefault();
-            const targetTop = targetSection.offsetTop;
-
-            window.scrollTo({
-              top: targetTop,
-              behavior: "smooth",
-            });
-          }
 
           // Reset scrolling flag after animation completes
           scrollTimer = setTimeout(() => {
             isScrolling = false;
           }, 1000);
-        } else {
-          e.preventDefault();
         }
       },
       { passive: false }
@@ -279,12 +320,15 @@ class NavigationManager {
         touchEndY = e.changedTouches[0].screenY;
         const touchDelta = touchStartY - touchEndY;
 
-        // Only trigger on significant swipes
-        if (Math.abs(touchDelta) > 50) {
+        // Only trigger on significant swipes (increased threshold for mobile)
+        if (Math.abs(touchDelta) > 100) {
           const currentScrollTop = window.pageYOffset;
+          const viewportHeight = window.innerHeight;
 
           // Find current section
+          let currentSection = null;
           let currentSectionIndex = 0;
+
           this.sections.forEach((section, index) => {
             const sectionTop = section.offsetTop;
             const sectionBottom = sectionTop + section.offsetHeight;
@@ -293,20 +337,39 @@ class NavigationManager {
               currentScrollTop >= sectionTop - 100 &&
               currentScrollTop < sectionBottom - 100
             ) {
+              currentSection = section;
               currentSectionIndex = index;
             }
           });
 
-          // Determine target section
+          if (!currentSection) return;
+
+          const sectionTop = currentSection.offsetTop;
+          const sectionHeight = currentSection.offsetHeight;
+          const scrollableHeight = Math.max(0, sectionHeight - viewportHeight);
+          const sectionScrollProgress = Math.max(
+            0,
+            currentScrollTop - sectionTop
+          );
+          const isAtSectionTop = sectionScrollProgress <= 100;
+          const isAtSectionBottom =
+            sectionScrollProgress >= scrollableHeight - 100;
+
+          // Determine target section with boundary checks
           let targetSection;
           if (
             touchDelta > 0 &&
+            isAtSectionBottom &&
             currentSectionIndex < this.sections.length - 1
           ) {
-            // Swiping up (scrolling down)
+            // Swiping up (scrolling down) - only if at bottom of section
             targetSection = this.sections[currentSectionIndex + 1];
-          } else if (touchDelta < 0 && currentSectionIndex > 0) {
-            // Swiping down (scrolling up)
+          } else if (
+            touchDelta < 0 &&
+            isAtSectionTop &&
+            currentSectionIndex > 0
+          ) {
+            // Swiping down (scrolling up) - only if at top of section
             targetSection = this.sections[currentSectionIndex - 1];
           }
 
@@ -365,7 +428,7 @@ class AnimationManager {
 
     // Observe all animatable elements
     const animatableElements = document.querySelectorAll(`
-            .skill-card, .project-card, .stat-card, .contact-card,
+            .skill-card, .project-card, .stat-card, .contact-card, .webinar-card,
             .timeline-item, .section-header, .about-text
         `);
 
