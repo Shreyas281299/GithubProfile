@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Shreyas Sharma - Full Stack Developer, SDK Engineer, and Unreal Engine Game Developer"
+    />
+    <meta
+      name="keywords"
+      content="Full Stack Developer, SDK Engineer, Unreal Engine, Game Developer, React, JavaScript"
+    />
+    <meta name="author" content="Shreyas Sharma" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Shreyas Sharma - Full Stack Developer" />
+    <meta
+      property="og:description"
+      content="Passionate software engineer building scalable SDKs, UI widgets, and Unreal Engine games"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://shreyas281299.github.io" />
+
+    <title>Shreyas Sharma - Full Stack Developer & Game Developer</title>
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="nav-logo">
+          <span class="logo-icon">🚀</span>
+          <span class="logo-text">Shreyas</span>
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+            <a href="#home" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#about" class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="#skills" class="nav-link">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a href="#projects" class="nav-link">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="nav-link">Contact</a>
+          </li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 class="hero-title">
+              <span class="wave">👋</span>
+              Hi, I'm <span class="highlight">Shreyas Sharma</span>
+            </h1>
+            <p class="hero-subtitle">
+              Full Stack Developer | SDK Engineer | Builder of Developer Tools |
+              Unreal Engine Game Developer
+            </p>
+            <p class="hero-description">
+              Passionate software engineer who thrives on building scalable
+              SDKs, powerful UI widgets, automation tools—and now, immersive
+              Unreal Engine 5 games.
+            </p>
+            <div class="hero-buttons">
+              <a href="#projects" class="btn btn-primary">
+                <i class="fas fa-rocket"></i>
+                View My Work
+              </a>
+              <a href="#contact" class="btn btn-secondary">
+                <i class="fas fa-envelope"></i>
+                Get In Touch
+              </a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <div class="profile-card">
+              <div class="profile-avatar">
+                <div class="avatar-placeholder">
+                  <i class="fas fa-user"></i>
+                </div>
+              </div>
+              <div class="status-indicator">
+                <span class="status-dot"></span>
+                Available for opportunities
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-scroll">
+          <a href="#about" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+          </a>
+        </div>
+      </div>
+      <div class="hero-bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">🚀 About Me</h2>
+          <p class="section-subtitle">
+            Building the future, one line of code at a time
+          </p>
+        </div>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Currently at <strong>Cisco</strong>, I work on core components and
+              SDKs for Webex Contact Center, designing developer-friendly APIs
+              and reusable UI widgets. Outside of work, I'm diving deep into
+              game development in UE5, blending creativity with technical skill
+              to bring interactive experiences to life.
+            </p>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <div class="stat-content">
+                <h3 class="stat-number">5+</h3>
+                <p class="stat-label">Years Experience</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-project-diagram"></i>
+              </div>
+              <div class="stat-content">
+                <h3 class="stat-number">50+</h3>
+                <p class="stat-label">Projects Completed</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-gamepad"></i>
+              </div>
+              <div class="stat-content">
+                <h3 class="stat-number">1</h3>
+                <p class="stat-label">Game in Development</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">🔧 What I Do</h2>
+          <p class="section-subtitle">My areas of expertise and passion</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-cube"></i>
+            </div>
+            <h3 class="skill-title">SDK Development</h3>
+            <p class="skill-description">
+              Engineer production-grade SDKs powering real-time communication
+              with developer-friendly APIs.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">API Design</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-puzzle-piece"></i>
+            </div>
+            <h3 class="skill-title">Widget Architecture</h3>
+            <p class="skill-description">
+              Build modular, metrics-enabled React widgets with MobX integration
+              for scalable applications.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">React</span>
+              <span class="tag">MobX</span>
+              <span class="tag">Component Design</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-gamepad"></i>
+            </div>
+            <h3 class="skill-title">Game Development (UE5)</h3>
+            <p class="skill-description">
+              Developing games from scratch using Blueprints, custom components,
+              and advanced UI systems.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">Unreal Engine 5</span>
+              <span class="tag">Blueprints</span>
+              <span class="tag">C++</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3 class="skill-title">UI Analytics</h3>
+            <p class="skill-description">
+              Build logging tools that capture lifecycle events and prop-level
+              metrics for data-driven insights.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">Analytics</span>
+              <span class="tag">Data Tracking</span>
+              <span class="tag">Metrics</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h3 class="skill-title">DevOps & Automation</h3>
+            <p class="skill-description">
+              GitHub Actions, changelog generators, CI/CD pipelines, and Yarn
+              workspaces for efficient development.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">GitHub Actions</span>
+              <span class="tag">CI/CD</span>
+              <span class="tag">Automation</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3 class="skill-title">Mobile Development</h3>
+            <p class="skill-description">
+              iOS development with Swift, computer vision, and 3D rendering for
+              innovative mobile experiences.
+            </p>
+            <div class="skill-tags">
+              <span class="tag">Swift</span>
+              <span class="tag">iOS</span>
+              <span class="tag">3D Rendering</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">🕹 Featured Projects</h2>
+          <p class="section-subtitle">
+            A showcase of my recent work and innovations
+          </p>
+        </div>
+        <div class="projects-grid">
+          <div class="project-card featured">
+            <div class="project-image">
+              <div class="project-placeholder">
+                <i class="fas fa-magic"></i>
+              </div>
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="#" class="project-link" title="View Project">
+                    <i class="fas fa-external-link-alt"></i>
+                  </a>
+                  <a href="#" class="project-link" title="View Code">
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3 class="project-title">🧙‍♂️ Game in Unreal Engine 5</h3>
+                <span class="project-status">In Development</span>
+              </div>
+              <p class="project-description">
+                Currently building an interactive game leveraging UE5's
+                Blueprint system and component architecture. Focus areas include
+                modular actor components, dynamic UI for health/mana/stamina,
+                and gameplay logic using Blueprints.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Unreal Engine 5</span>
+                <span class="tech-tag">Blueprint</span>
+                <span class="tech-tag">UI Systems</span>
+                <span class="tech-tag">Custom Components</span>
+              </div>
+              <div class="project-features">
+                <ul>
+                  <li>Modular actor components</li>
+                  <li>Dynamic UI for health, mana, and stamina</li>
+                  <li>Gameplay logic using Blueprints</li>
+                  <li>Animation, VFX, and AI systems</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-image">
+              <div class="project-placeholder">
+                <i class="fas fa-broadcast-tower"></i>
+              </div>
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="#" class="project-link" title="View Project">
+                    <i class="fas fa-external-link-alt"></i>
+                  </a>
+                  <a href="#" class="project-link" title="View Code">
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3 class="project-title">📡 Contact Center Widgets</h3>
+                <span class="project-status">Production</span>
+              </div>
+              <p class="project-description">
+                Developed a suite of embeddable widgets for the Webex Contact
+                Center platform including Station Login, Messaging & Calling
+                Spaces, and Multi-party Video with custom SDK integrations.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">WebRTC</span>
+                <span class="tech-tag">MobX</span>
+                <span class="tech-tag">Webex SDK</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-image">
+              <div class="project-placeholder">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="#" class="project-link" title="View Project">
+                    <i class="fas fa-external-link-alt"></i>
+                  </a>
+                  <a href="#" class="project-link" title="View Code">
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3 class="project-title">📈 UI Metrics Logger</h3>
+                <span class="project-status">NPM Package</span>
+              </div>
+              <p class="project-description">
+                A developer-friendly tool to log prop changes, widget lifecycle
+                events, and user behavior with zero configuration. Published as
+                shreyas-cc-widgets@npm.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">React HOC</span>
+                <span class="tech-tag">Amplitude</span>
+                <span class="tech-tag">NPM</span>
+                <span class="tech-tag">Analytics</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-image">
+              <div class="project-placeholder">
+                <i class="fas fa-cube"></i>
+              </div>
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a href="#" class="project-link" title="View Project">
+                    <i class="fas fa-external-link-alt"></i>
+                  </a>
+                  <a href="#" class="project-link" title="View Code">
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3 class="project-title">🌐 3D Model Generator</h3>
+                <span class="project-status">iOS App</span>
+              </div>
+              <p class="project-description">
+                Built a Swift-based iOS app that takes multiple photos and
+                reconstructs an interactive 3D model. Ideal for showcasing
+                products or digital assets in AR/VR scenarios.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">iOS</span>
+                <span class="tech-tag">Swift</span>
+                <span class="tech-tag">Computer Vision</span>
+                <span class="tech-tag">3D Rendering</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Highlights -->
+    <section class="highlights">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">📚 Recent Highlights</h2>
+          <p class="section-subtitle">Latest achievements and milestones</p>
+        </div>
+        <div class="highlights-timeline">
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i class="fas fa-sync-alt"></i>
+            </div>
+            <div class="timeline-content">
+              <h3>Migrated monorepo to Yarn Workspaces + GitHub Actions</h3>
+              <p>
+                Streamlined development workflow and improved build performance
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <div class="timeline-content">
+              <h3>Implemented HMR across SDK packages</h3>
+              <p>Achieved 3x faster development with Hot Module Replacement</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="timeline-content">
+              <h3>Automated changelog and package publishing flows</h3>
+              <p>Reduced manual work and improved release consistency</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <div class="timeline-content">
+              <h3>Designed test coverage improvements</h3>
+              <p>
+                Enhanced code quality with prop diffing tools and better testing
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <i class="fas fa-gamepad"></i>
+            </div>
+            <div class="timeline-content">
+              <h3>Prototyping core mechanics in UE5</h3>
+              <p>Building foundational systems for upcoming game project</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy">
+      <div class="container">
+        <div class="philosophy-content">
+          <div class="philosophy-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h2 class="philosophy-title">🧠 Philosophy</h2>
+          <p class="philosophy-text">
+            Build scalable, maintainable, and developer-friendly systems.
+            Whether it's a widget, a build pipeline, or a game mechanic—<strong
+              >clarity and reusability are always the goal</strong
+            >.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">📬 Let's Connect</h2>
+          <p class="section-subtitle">
+            Ready to collaborate? Let's build something amazing together!
+          </p>
+        </div>
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fab fa-github"></i>
+              </div>
+              <div class="contact-details">
+                <h3>GitHub</h3>
+                <a
+                  href="https://github.com/Shreyas281299"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  github.com/Shreyas281299
+                </a>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fab fa-linkedin"></i>
+              </div>
+              <div class="contact-details">
+                <h3>LinkedIn</h3>
+                <a
+                  href="https://linkedin.com/in/shreyas-sharma"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  linkedin.com/in/shreyas-sharma
+                </a>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-globe"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Portfolio</h3>
+                <a
+                  href="https://shreyas281299.github.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  shreyas281299.github.io
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-cta">
+            <p>Open to new opportunities and exciting collaborations!</p>
+            <a href="mailto:shreyas.sharma@example.com" class="btn btn-primary">
+              <i class="fas fa-paper-plane"></i>
+              Send Message
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-left">
+            <p>&copy; 2024 Shreyas Sharma. Built with ❤️ and lots of ☕</p>
+          </div>
+          <div class="footer-right">
+            <div class="social-links">
+              <a
+                href="https://github.com/Shreyas281299"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="https://linkedin.com/in/shreyas-sharma"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a
+                href="https://twitter.com/shreyas281299"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
