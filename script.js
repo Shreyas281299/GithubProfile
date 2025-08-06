@@ -231,15 +231,36 @@ class NavigationManager {
         const sectionHeight = currentSection.offsetHeight;
         const viewportHeight = window.innerHeight;
 
-        // Calculate how much of the section is visible and scrollable
-        const scrollableHeight = Math.max(0, sectionHeight - viewportHeight);
+        // Calculate section scroll boundaries more intelligently
         const sectionScrollProgress = Math.max(
           0,
           currentScrollTop - sectionTop
         );
-        const isAtSectionTop = sectionScrollProgress <= 50; // 50px threshold
-        const isAtSectionBottom =
-          sectionScrollProgress >= scrollableHeight - 50; // 50px threshold
+        const sectionBottom = sectionTop + sectionHeight;
+        const viewportBottom = currentScrollTop + viewportHeight;
+
+        // For sections shorter than viewport, use different logic
+        const isShortSection = sectionHeight <= viewportHeight;
+
+        let isAtSectionTop, isAtSectionBottom;
+
+        if (isShortSection) {
+          // For short sections, check if we're near the actual section boundaries
+          const distanceFromSectionTop = Math.abs(
+            currentScrollTop - sectionTop
+          );
+          const distanceFromSectionBottom = Math.abs(
+            viewportBottom - sectionBottom
+          );
+
+          isAtSectionTop = distanceFromSectionTop <= 100;
+          isAtSectionBottom = distanceFromSectionBottom <= 100;
+        } else {
+          // For tall sections, use scrollable area logic
+          const scrollableHeight = sectionHeight - viewportHeight;
+          isAtSectionTop = sectionScrollProgress <= 50;
+          isAtSectionBottom = sectionScrollProgress >= scrollableHeight - 50;
+        }
 
         // Only snap if we're at the boundaries of the section
         let shouldSnap = false;
@@ -346,14 +367,35 @@ class NavigationManager {
 
           const sectionTop = currentSection.offsetTop;
           const sectionHeight = currentSection.offsetHeight;
-          const scrollableHeight = Math.max(0, sectionHeight - viewportHeight);
           const sectionScrollProgress = Math.max(
             0,
             currentScrollTop - sectionTop
           );
-          const isAtSectionTop = sectionScrollProgress <= 100;
-          const isAtSectionBottom =
-            sectionScrollProgress >= scrollableHeight - 100;
+          const sectionBottom = sectionTop + sectionHeight;
+          const viewportBottom = currentScrollTop + viewportHeight;
+
+          // For sections shorter than viewport, use different logic
+          const isShortSection = sectionHeight <= viewportHeight;
+
+          let isAtSectionTop, isAtSectionBottom;
+
+          if (isShortSection) {
+            // For short sections, check if we're near the actual section boundaries
+            const distanceFromSectionTop = Math.abs(
+              currentScrollTop - sectionTop
+            );
+            const distanceFromSectionBottom = Math.abs(
+              viewportBottom - sectionBottom
+            );
+
+            isAtSectionTop = distanceFromSectionTop <= 150;
+            isAtSectionBottom = distanceFromSectionBottom <= 150;
+          } else {
+            // For tall sections, use scrollable area logic
+            const scrollableHeight = sectionHeight - viewportHeight;
+            isAtSectionTop = sectionScrollProgress <= 100;
+            isAtSectionBottom = sectionScrollProgress >= scrollableHeight - 100;
+          }
 
           // Determine target section with boundary checks
           let targetSection;

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Shreyas Sharma - TL;DR - Quick summary of Full Stack Developer, SDK Engineer, and Unreal Engine Game Developer"
+    />
+    <meta
+      name="keywords"
+      content="Full Stack Developer, SDK Engineer, Unreal Engine, Game Developer, React, JavaScript, TL;DR, Quick Summary"
+    />
+    <meta name="author" content="Shreyas Sharma" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Shreyas Sharma - Quick Summary (TL;DR)"
+    />
+    <meta
+      property="og:description"
+      content="Everything you need to know about Shreyas Sharma in 30 seconds"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://shreyas281299.github.io/tldr.html"
+    />
+
+    <title>Shreyas Sharma - TL;DR</title>
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* TL;DR specific styles */
+      body {
+        background: linear-gradient(
+          135deg,
+          var(--bg-primary) 0%,
+          var(--bg-secondary) 100%
+        );
+        min-height: 100vh;
+      }
+
+      .tldr-hero {
+        text-align: center;
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+      }
+
+      .tldr-hero h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        margin-bottom: 1rem;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .tldr-hero p {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto 2rem;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--primary-color);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        margin-bottom: 2rem;
+      }
+
+      .back-link:hover {
+        color: var(--primary-dark);
+        transform: translateX(-5px);
+      }
+
+      .tldr-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="tldr-container">
+      <a href="index.html" class="back-link">
+        <i class="fas fa-arrow-left"></i>
+        Back to Full Portfolio
+      </a>
+
+      <div class="tldr-hero">
+        <h1>⚡ Shreyas Sharma - TL;DR</h1>
+        <p>Everything you need to know in 30 seconds</p>
+      </div>
+
+      <div class="tldr-grid">
+        <div class="tldr-card">
+          <div class="tldr-icon">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <h3>Current Role</h3>
+          <p>
+            <strong>SDK Engineer at Cisco</strong><br />
+            Building Webex Contact Center SDKs and UI widgets for real-time
+            communication
+          </p>
+        </div>
+
+        <div class="tldr-card">
+          <div class="tldr-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3>Tech Stack</h3>
+          <p>
+            <strong>Frontend:</strong> React, TypeScript, MobX, HTML5, CSS3<br />
+            <strong>Backend:</strong> Node.js, Python, API Design<br />
+            <strong>Game Dev:</strong> Unreal Engine 5, Blueprints, C++
+          </p>
+        </div>
+
+        <div class="tldr-card">
+          <div class="tldr-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h3>Current Projects</h3>
+          <p>
+            <strong>UE5 Game:</strong> Interactive game with modular
+            components<br />
+            <strong>Webex Widgets:</strong> Production SDKs for Contact
+            Center<br />
+            <strong>UI Analytics:</strong> NPM package for prop-level tracking
+          </p>
+        </div>
+
+        <div class="tldr-card">
+          <div class="tldr-icon">
+            <i class="fas fa-microphone"></i>
+          </div>
+          <h3>Speaking & Webinars</h3>
+          <p>
+            <strong>3 Technical Webinars:</strong> Webex SDK integration
+            expertise<br />
+            <strong>Topics:</strong> Meetings V3, Calling SDK, Multistream
+            optimization<br />
+            <strong>Audience:</strong> Developer community & SDK users
+          </p>
+        </div>
+
+        <div class="tldr-card">
+          <div class="tldr-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <h3>Recent Achievements</h3>
+          <p>
+            <strong>Monorepo Migration:</strong> Yarn Workspaces + GitHub
+            Actions<br />
+            <strong>Performance Boost:</strong> 3x faster development with
+            HMR<br />
+            <strong>Automation:</strong> CI/CD pipelines & changelog generation
+          </p>
+        </div>
+
+        <div class="tldr-card">
+          <div class="tldr-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Development Philosophy</h3>
+          <p>
+            <strong>Goal:</strong> Scalable, maintainable, developer-friendly
+            systems<br />
+            <strong>Focus:</strong> Clear APIs and reusable components<br />
+            <strong>Values:</strong> Clarity, reusability, and user experience
+          </p>
+        </div>
+
+        <div class="tldr-card">
+          <div class="tldr-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Key Skills</h3>
+          <p>
+            <strong>SDK Development:</strong> Production-grade APIs<br />
+            <strong>Widget Architecture:</strong> Modular React components<br />
+            <strong>DevOps:</strong> GitHub Actions, Docker, CI/CD automation
+          </p>
+        </div>
+
+        <div class="tldr-card">
+          <div class="tldr-icon">
+            <i class="fas fa-gamepad"></i>
+          </div>
+          <h3>Game Development</h3>
+          <p>
+            <strong>Engine:</strong> Unreal Engine 5 with Blueprints<br />
+            <strong>Features:</strong> Dynamic UI, modular components<br />
+            <strong>Focus:</strong> Interactive experiences & gameplay mechanics
+          </p>
+        </div>
+
+        <div class="tldr-card">
+          <div class="tldr-icon">
+            <i class="fas fa-tools"></i>
+          </div>
+          <h3>Developer Tools</h3>
+          <p>
+            <strong>Automation:</strong> Build pipelines & workflow
+            optimization<br />
+            <strong>Analytics:</strong> UI metrics logging and prop tracking<br />
+            <strong>Testing:</strong> Coverage improvements & prop diffing tools
+          </p>
+        </div>
+      </div>
+
+      <div class="tldr-cta">
+        <p>Want the full story with detailed projects and webinars?</p>
+        <div class="tldr-links">
+          <a href="index.html" class="btn btn-primary">
+            <i class="fas fa-arrow-right"></i>
+            View Full Portfolio
+          </a>
+          <a href="index.html#webinars" class="btn btn-secondary">
+            <i class="fas fa-play"></i>
+            Watch Webinars
+          </a>
+          <a href="index.html#contact" class="btn btn-secondary">
+            <i class="fas fa-paper-plane"></i>
+            Let's Connect
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Simple theme toggle for TL;DR page
+      class SimpleThemeManager {
+        constructor() {
+          this.theme = localStorage.getItem("theme") || "light";
+          this.themeToggle = document.getElementById("themeToggle");
+          this.init();
+        }
+
+        init() {
+          this.setTheme(this.theme);
+          this.themeToggle.addEventListener("click", () => this.toggleTheme());
+          this.updateThemeIcon();
+        }
+
+        setTheme(theme) {
+          this.theme = theme;
+          document.documentElement.setAttribute("data-theme", theme);
+          localStorage.setItem("theme", theme);
+          this.updateThemeIcon();
+        }
+
+        toggleTheme() {
+          const newTheme = this.theme === "light" ? "dark" : "light";
+          this.setTheme(newTheme);
+
+          // Add animation
+          this.themeToggle.style.transform = "rotate(360deg)";
+          setTimeout(() => {
+            this.themeToggle.style.transform = "";
+          }, 300);
+        }
+
+        updateThemeIcon() {
+          const icon = this.themeToggle.querySelector("i");
+          if (this.theme === "dark") {
+            icon.className = "fas fa-sun";
+          } else {
+            icon.className = "fas fa-moon";
+          }
+        }
+      }
+
+      // Initialize theme manager
+      document.addEventListener("DOMContentLoaded", () => {
+        new SimpleThemeManager();
+
+        // Add loading animations
+        const cards = document.querySelectorAll(".tldr-card");
+        cards.forEach((card, index) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(20px)";
+
+          setTimeout(() => {
+            card.style.transition = "all 0.6s ease";
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          }, index * 100);
+        });
+      });
+    </script>
+  </body>
+</html>
